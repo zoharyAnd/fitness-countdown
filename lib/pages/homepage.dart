@@ -34,10 +34,12 @@ class _HomePageState extends State<HomePage> {
   void _showPopup(BuildContext context) {
     showModalBottomSheet(
       context: context,
+      isScrollControlled: true,
       builder: (context) {
-        return Container(
-          padding: const EdgeInsets.all(16.0),
-          height: 300,
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
           child: SettingsPopup(
               sessionDuration: _sessionDuration,
               nbOfSets: _nbOfSets,

@@ -122,12 +122,18 @@ class _CountdownState extends State<Countdown> {
   @override
   Widget build(BuildContext context) {
     final themeSecondary = Theme.of(context).colorScheme.secondary;
-    return Center(
-        child: Padding(
-      padding: const EdgeInsets.only(top: 50, bottom: 150),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
+    return LayoutBuilder(
+      builder: (context, constraints) => SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: constraints.maxHeight),
+          child: IntrinsicHeight(
+            child: SizedBox(
+              width: double.infinity,
+              child: Padding(
+              padding: const EdgeInsets.only(top: 50, bottom: 50),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
           Column(
             children: [
               Text(
@@ -181,12 +187,17 @@ class _CountdownState extends State<Countdown> {
                   lineWidth: 15,
                   backgroundColor: Colors.transparent,
                   animateFromLastPercent: true)),
-          Text(
-            "Remaining: ${widget.nbOfSets - _setsCompleted} sets",
-            style: const TextStyle(fontSize: 20),
+                  Text(
+                    "Remaining: ${widget.nbOfSets - _setsCompleted} sets",
+                    style: const TextStyle(fontSize: 20),
+                  ),
+                ],
+              ),
+            ),
+            ),
           ),
-        ],
+        ),
       ),
-    ));
+    );
   }
 }
