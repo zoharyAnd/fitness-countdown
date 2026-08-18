@@ -22,3 +22,6 @@ windows/
 
 # FVM Version Cache
 .fvm/
+
+# Flutter SDK downloaded by the Vercel build
+.flutter-sdk/
